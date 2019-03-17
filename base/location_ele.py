@@ -1,16 +1,13 @@
 # encoding=utf-8
 
-from util.read_ini import ReadIni
 
-
-class FindElement(object):
+class LocationElement(object):
     def __init__(self, driver):
         self.driver = driver
 
-    def get_element(self, key):
-        read_ini = ReadIni()
+    def get_element(self, location):
         try:
-            arr = read_ini.get_value(key).split(':')
+            arr = location.split(':',1)
             by, value = arr[0], arr[1]
             if by == 'id':
                 return self.driver.find_element_by_id(value)
