@@ -9,6 +9,7 @@ import time
 import string
 import random
 
+
 driver = webdriver.Chrome()
 
 
@@ -16,13 +17,14 @@ def driver_init():
     driver.get("http://www.5itest.cn/register")
     driver.maximize_window()
     time.sleep(5)
+    
 
 
 def get_elementById(id):
     return driver.find_element_by_id(id)
 
 # 产生随机数
-def get_random(num):
+def get_random_user(num):
     return ''.join(random.sample(string.ascii_letters+string.digits, num))
 
 
@@ -50,7 +52,7 @@ def get_code_text(file_name):
 # 运行主程序
 def run_main():
     driver_init()
-    username=get_random(6)
+    username=get_random_user(6)
     userEmail=username+"@163.com"
     file_name='./screenshot/code.png'
     get_elementById("register_email").send_keys(userEmail)
