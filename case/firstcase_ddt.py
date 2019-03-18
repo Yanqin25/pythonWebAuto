@@ -18,12 +18,14 @@ class RegisterCase(unittest.TestCase):
     def setUpClass(cls):
         cls.file_name=r"E:\coding\yangqin\pythonAuto\screenCapture\code.png"
     def setUp(self):
+        print("用例开始执行")
         self.driver = webdriver.Chrome()
         self.driver.get("http://www.5itest.cn/register")
         self.driver.maximize_window()
         self.register_b = RegisterBusiness(self.driver)
 
     def tearDown(self):
+        print("用例执行结束")
         for method_name,error in self._outcome.errors:
             if error:
                 # case_name=self._testMethodName

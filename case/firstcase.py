@@ -8,7 +8,7 @@ import unittest
 from util.HTMLTestRunner import HTMLTestRunner
 from selenium import webdriver
 from business.register_business import RegisterBusiness
-
+from log.user_log import UserLog
 
 
 class FirstCase(unittest.TestCase):
@@ -16,9 +16,12 @@ class FirstCase(unittest.TestCase):
     @classmethod
     def setUpClass(cls):
         cls.file_name=r"E:\coding\yangqin\pythonAuto\screenCapture\code.png"
+        cls.log=UserLog()
+        cls.logger=cls.log.get_logger()
     def setUp(self):
         self.driver = webdriver.Chrome()
         self.driver.get("http://www.5itest.cn/register")
+        self.logger.info("this is chrome")
         self.driver.maximize_window()
         self.register_b = RegisterBusiness(self.driver)
 
@@ -30,7 +33,9 @@ class FirstCase(unittest.TestCase):
                 file_path=os.path.join(os.getcwd(),'screenCapture',case_name+'.png')
                 self.driver.save_screenshot(file_path)
         self.driver.close()
-
+    @classmethod
+    def tearDownClass(self):
+        self.log.close()
     def test_register_email_err(self):
         result = self.register_b.register_email_err(
             '7404@@qq.com', 'test1', '111111', self.file_name)
@@ -68,9 +73,9 @@ if __name__ == "__main__":
         suite = unittest.TestSuite()
         suite.addTest(FirstCase("test_register_email_err"))
         suite.addTest(FirstCase("test_register_username_err"))
-        suite.addTest(FirstCase("test_register_password_err"))
-        suite.addTest(FirstCase("test_register_code_err"))
-        suite.addTest(FirstCase("test_register_success"))
+        # suite.addTest(FirstCase("test_register_password_err"))
+        # suite.addTest(FirstCase("test_register_code_err"))
+        # suite.addTest(FirstCase("test_register_success"))
         runner = HTMLTestRunner(
             stream=f, title="this is first report", description=u"这是第一个测试报告", verbosity=2)
         runner.run(suite)
