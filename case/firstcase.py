@@ -1,7 +1,7 @@
 # coding=utf-8
 
 import sys
-sys.path.append("E:/coding/yangqin/pythonAuto")
+sys.path.append(r"E:/myJavaCode/pythonWebAuto")
 import os
 import time
 import unittest

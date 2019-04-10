@@ -333,9 +333,9 @@ function hide_img(obj){
 </div>
 <div class='heading'>
 <h1>this is first report</h1>
-<p class='attribute'><strong>开始时间:</strong> 2019-03-19 00:11:31</p>
-<p class='attribute'><strong>耗时:</strong> 0:00:36.841107</p>
-<p class='attribute'><strong>状态:</strong> <span class="tj passCase">Pass</span>2</p>
+<p class='attribute'><strong>开始时间:</strong> 2019-03-21 16:54:45</p>
+<p class='attribute'><strong>耗时:</strong> 0:00:47.494000</p>
+<p class='attribute'><strong>状态:</strong> <span class="tj errorCase">Error</span>2</p>
 
 <p class='description'>这是第一个测试报告</p>
 </div>
@@ -366,41 +366,95 @@ function hide_img(obj){
     <th>错误截图</th>
 </tr>
 
-<tr class='passClass'>
+<tr class='errorClass'>
     <td>FirstCase</td>
     <td>2</td>
+    <td>0</td>
+    <td>0</td>
     <td>2</td>
-    <td>0</td>
-    <td>0</td>
     <td><a href="javascript:showClassDetail('c1',2)">详情</a></td>
     <td>&nbsp;</td>
 </tr>
 
-<tr id='pt1.1' class='hiddenRow'>
-    <td><div class='testcase'>test_register_email_err</div></td>
-    <td colspan='5' align='center'><span class='status passCase'>通过</span></td>
+<tr id='ft1.1' class='none'>
+    <td ><div class='testcase'>test_register_email_err</div></td>
+    <td colspan='5' align='center'>
+    <!--css div popup start-->
+    <span class='status errorCase'>
+    <a class="popup_link" onfocus='this.blur();' href="javascript:showTestDetail('div_ft1.1')" >
+        错误</a></span>
+    <div id='div_ft1.1' class="popup_window">
+        <div style='text-align: right; color:red;cursor:pointer'>
+        <a onfocus='this.blur();' onclick="document.getElementById('div_ft1.1').style.display = 'none' " >
+           [x]</a>
+        </div>
+        <pre>
+        
+ft1.1: Traceback (most recent call last):
+  File "case/firstcase.py", line 41, in test_register_email_err
+    '7404@@qq.com', 'test1', '111111', self.file_name)
+  File "E:/myJavaCode/pythonWebAuto\business\register_business.py", line 27, in register_email_err
+    self.user_base(email, username, password, file_name)
+  File "E:/myJavaCode/pythonWebAuto\business\register_business.py", line 11, in user_base
+    self.register_h.send_user_email(email)
+  File "E:/myJavaCode/pythonWebAuto\handle\register_handle.py", line 12, in send_user_email
+    self.register_p.get_email_element().send_keys(email)
+AttributeError: 'NoneType' object has no attribute 'send_keys'
+
+
+        </pre>
+    </div>
+    <!--css div popup end-->
+    </td>
     <td>无截图</td>
 </tr>
 
-<tr id='pt1.2' class='hiddenRow'>
-    <td><div class='testcase'>test_register_username_err</div></td>
-    <td colspan='5' align='center'><span class='status passCase'>通过</span></td>
+<tr id='ft1.2' class='none'>
+    <td ><div class='testcase'>test_register_username_err</div></td>
+    <td colspan='5' align='center'>
+    <!--css div popup start-->
+    <span class='status errorCase'>
+    <a class="popup_link" onfocus='this.blur();' href="javascript:showTestDetail('div_ft1.2')" >
+        错误</a></span>
+    <div id='div_ft1.2' class="popup_window">
+        <div style='text-align: right; color:red;cursor:pointer'>
+        <a onfocus='this.blur();' onclick="document.getElementById('div_ft1.2').style.display = 'none' " >
+           [x]</a>
+        </div>
+        <pre>
+        
+ft1.2: Traceback (most recent call last):
+  File "case/firstcase.py", line 47, in test_register_username_err
+    '74079865@qq.com', 't', '111111', self.file_name)
+  File "E:/myJavaCode/pythonWebAuto\business\register_business.py", line 31, in register_username_err
+    self.user_base(email, username, password, file_name)
+  File "E:/myJavaCode/pythonWebAuto\business\register_business.py", line 11, in user_base
+    self.register_h.send_user_email(email)
+  File "E:/myJavaCode/pythonWebAuto\handle\register_handle.py", line 12, in send_user_email
+    self.register_p.get_email_element().send_keys(email)
+AttributeError: 'NoneType' object has no attribute 'send_keys'
+
+
+        </pre>
+    </div>
+    <!--css div popup end-->
+    </td>
     <td>无截图</td>
 </tr>
 
 <tr id='total_row'>
     <th>统计</th>
     <th>2</th>
+    <th>0</th>
+    <th>0</th>
     <th>2</th>
-    <th>0</th>
-    <th>0</th>
     <th>&nbsp;</th>
     <th>&nbsp;</th>
 </tr>
 </table>
 <script>
     showCase(1);
-    drawCircle(2, 0, 0);
+    drawCircle(0, 0, 2);
 </script>
 
 <div id='ending'>&nbsp;</div>
