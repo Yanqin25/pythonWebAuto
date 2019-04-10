@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>统计结果</title>
+    <meta charset="utf-8" />
+    <link rel="stylesheet" type="text/css" href="https://cdn.bootcss.com/twitter-bootstrap/3.0.1/css/bootstrap.min.css">
+    <script src="https://cdn.bootcss.com/jquery/3.3.1/jquery.min.js"></script>
+    <script src="https://cdn.bootcss.com/twitter-bootstrap/3.0.1/js/bootstrap.min.js"></script>
+</head>
+
+<body>
+    <div class="container">
+        <div class="row clearfix">
+            <div class="col-md-12 column">
+                <div class="tabbable" id="tabs-240043">
+                    <ul class="nav nav-tabs">
+                        <li class="active">
+                            <a href="#panel-843123" data-toggle="tab">统计总览</a>
+                        </li>
+                        <li>
+                            <a href="#panel-514303" data-toggle="tab">统计详情</a>
+                        </li>
+                    </ul>
+                    <div class="tab-content">
+                        <div class="tab-pane active" id="panel-843123">
+                            <div class="col-md-12 column">
+                                <p> 共发现问题
+                                    <%=result.sumaryRuslt.totalBug%>个，其中
+                                    <% if(result.sumaryRuslt.totalBlocker!==0) { %> 危险
+                                    <%=result.sumaryRuslt.totalBlocker%>个，
+                                    <% } %>严重
+                                    <%=result.sumaryRuslt.totalCritical%>个，一般
+                                    <%=result.sumaryRuslt.totalMajor%>个，建议
+                                    <%=result.sumaryRuslt.totalMinor%>个</p>
+                                <p> 共关闭问题
+                                    <%=result.sumaryRuslt.closeTotal%>个，其中已修复
+                                    <%=result.sumaryRuslt.closeRevised%>个，废弃
+                                    <%=result.sumaryRuslt.closeDiscard%>个</p>
+                                <p> 未关闭问题
+                                    <%=result.sumaryRuslt.openTotal%>个，其中正在解决中
+                                    <%=result.sumaryRuslt.openSolving%>个，遗留
+                                    <%=result.sumaryRuslt.openLeft%>个，待验证
+                                    <%=result.sumaryRuslt.openToverfy%>个
+                                    <% if(result.sumaryRuslt.newRequire!==0) { %>，创建需求
+                                    <%=result.sumaryRuslt.newRequire%>个
+                                    <% } %>
+                                </p>
+                            </div>
+                        </div>
+                        <div class="tab-pane" id="panel-514303">
+                            <div class="col-md-12 column" style="margin-top: 15px">
+                                <table id="bugDetail" class="table table-condensed table-bordered table-striped table-hover">
+                                    <thead>
+                                        <tr class="success">
+                                            <th> bugId </th>
+                                            <th> 详细描述 </th>
+                                            <th> 优先级 </th>
+                                            <!-- <th> 状态 </th> -->
+                                            <th> 状态 </th>
+                                            <th> 责任人 </th>
+                                            <th> 提交时间 </th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <%result.bugDetail.forEach(function(item){%>
+                                        <tr>
+                                            <td>
+                                                <a href="<%=item.bugLink%>"><%=item.bugId%></a>
+                                            </td>
+                                            <td>
+                                                <%=item.bugDesc%>
+                                            </td>
+                                            <td>
+                                                <%=item.bugPriority%>
+                                            </td>
+                                            <td>
+                                                <%=item.bugStatus%>
+                                            </td>
+                                            <td>
+                                                <%=item.bugCharge%>
+                                            </td>
+                                            <td>
+                                                <%=item.bugTime%>
+                                            </td>
+                                        </tr>
+                                        <%})%>
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+</body>
+<!-- <script type="text/javascript">
+var $bugList = $('#bugDetail tbody tr')
+
+function showAll() {
+    $bugList.each(el => {
+        var item = $($bugList.get(el))
+        item.removeClass('hide')
+    })
+}
+
+function show(filter) {
+    showAll();
+    $bugList.each(el => {
+        var item = $($bugList.get(el))
+        var status = item.find('td').get(3).innerText.trim()
+        if (filter.indexOf(status) == -1) {
+            item.addClass('hide')
+        } 
+    })
+
+}
+
+// console.log('test');
+</script> -->
+
+</html>

@@ -1,0 +1,23 @@
+body {
+
+    background: url(../images/simayi.jpg) no-repeat;
+    background-size: cover;
+    color: #eee
+}
+
+#cover {
+    position: absolute;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    top: 0;
+    background-color: #999;
+    opacity: 0.7;
+    z-index: -1;
+}
+
+.login {
+    margin-top: 10%;
+    border: 1px solid #bbb;
+    background-size: cover;
+}

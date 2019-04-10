@@ -1,0 +1,5 @@
+certifi==2019.3.9
+PIL==1.1.7
+selenium==3.141.0
+urllib3==1.24.1
+wincertstore==0.2

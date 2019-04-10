@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>自动统计小工具</title>
+    <meta charset="utf-8" />
+    <link rel="stylesheet" type="text/css" href="https://cdn.bootcss.com/twitter-bootstrap/3.0.1/css/bootstrap.min.css">
+    <link rel="stylesheet" type="text/css" href="../style/sumary.css">
+</head>
+
+<body>
+    <div id="cover"></div> 
+    <div class="container">
+        <div class="row clearfix">
+            <div class="col-md-6  col-md-offset-3 column sumary">
+                <form role="form" action="http://127.0.0.1:8888/doSumary" method="POST">
+                    <div class="form-group">
+                        <label for="JSESSIONID">JSESSIONID:</label><input type="text" class="form-control" id="JSESSIONID" name="JSESSIONID" placeholder="请输入JESSIONID" required="" />
+                    </div>
+                    <div class="form-group">
+                        <label for="RequireNo">RequireNo:</label><input type="text" class="form-control" id="RequireNo" name="RequireNo" placeholder="请输入需求编号，如：QWMH-2611" required />
+                    </div>
+                    <div class="form-group">
+                        <label for="mode">请选择统计模式：</label>
+                        <label class="radioItem"><input type="radio" name="modelName" value="all" checked="" />all</label>
+                        <label class="radioItem"><input type="radio" name="modelName" value="include" />include</label>
+                        <label class="radioItem"><input type="radio" name="modelName" value="exclude" />exclude</label>
+                    </div>
+                    <div class="form-group filter" style="display: none;">
+                        <label for="filter">过滤条件:</label><input type="text" class="form-control" id="RequireNo" name="filter" placeholder="" />
+                    </div>
+                    <button type="submit" class="btn btn-info">Sumary</button>
+                </form>
+            </div>
+        </div>
+    </div>
+</body>
+<script src="https://cdn.bootcss.com/jquery/3.3.1/jquery.min.js"></script>
+<script type="text/javascript">
+$(function() {
+    $('.radioItem').on('click', function() {
+        $this = $(this)
+
+        var val = $this.find('input').val()
+        var $filter = $('.filter')
+        if (val === 'include') {
+            $filter.addClass('show')
+            $filter.find('input').attr('placeholder', '请输入你要筛选的类型，多个使用英文分割')
+            $filter.find('input').attr('required', '')
+        } else if (val === 'exclude') {
+            $filter.find('input').attr('placeholder', '请输入你要排除的类型，多个使用英文分割')
+            $filter.addClass('show')
+            $filter.find('input').attr('required', '')
+        } else {
+            $filter.removeClass('show')
+            $filter.find('input').removeAttr('required')
+
+        }
+
+
+    })
+})
+</script>
+
+</html>

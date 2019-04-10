@@ -1,0 +1,1 @@
+LOGIN_VALID_CODE_ERR='图片验证没有通过，请稍后重试'
