@@ -1,8 +1,8 @@
 # coding=utf-8
 
 import sys
-sys.path.append("E:/coding/yangqin/pythonAuto")
 import os
+sys.path.append(os.getcwd())
 import time
 import unittest
 from util.HTMLTestRunner import HTMLTestRunner
@@ -15,11 +15,11 @@ class FirstCase(unittest.TestCase):
 
     @classmethod
     def setUpClass(cls):
-        cls.file_name=r"E:\coding\yangqin\pythonAuto\screenCapture\code.png"
+        cls.driver = webdriver.Chrome()
+        cls.file_name=os.path.join(os.getcwd(),"\screenCapture\code.png")
         cls.log=UserLog()
         cls.logger=cls.log.get_logger()
     def setUp(self):
-        self.driver = webdriver.Chrome()
         self.driver.get("http://www.5itest.cn/register")
         self.logger.info("this is chrome")
         self.driver.maximize_window()
@@ -32,33 +32,34 @@ class FirstCase(unittest.TestCase):
                 case_name=str(method_name)[:str(method_name).find("(")]
                 file_path=os.path.join(os.getcwd(),'screenCapture',case_name+'.png')
                 self.driver.save_screenshot(file_path)
-        self.driver.close()
+        
     @classmethod
-    def tearDownClass(self):
-        self.log.close()
+    def tearDownClass(cls):
+        cls.driver.close()
+        cls.log.close()
     def test_register_email_err(self):
         result = self.register_b.register_email_err(
-            '7404@@qq.com', 'test1', '111111', self.file_name)
+            '740479865@qq.com', 'test1', '111111', self.file_name)
         # print('email校验失败！') if result else print("测试通过")
         self.assertFalse(result, "邮箱格式校验有误")
-
+    
     def test_register_username_err(self):
         result = self.register_b.register_username_err(
             '74079865@qq.com', 't', '111111', self.file_name)
         # print('用户名校验失败！') if result else print("测试通过")
         self.assertFalse(result, "用户名校验有误")
-
+    @unittest.skip('not excute')
     def test_register_password_err(self):
         result = self.register_b.register_password_err(
             'zhangshan@qq.com', 'zhanshan', '1', self.file_name)
         # print('密码校验失败！') if result else print("测试通过")
         self.assertFalse(result, "密码校验有误")
-
+    @unittest.skip('not excute')
     def test_register_code_err(self):
         result = self.register_b.register_code_err(
             'zhangshan2@qq.com', 'zhanshan2', '111111', '2222')
         print('验证码校验失败！') if result else print("测试通过")
-
+    @unittest.skip('not excute')
     def test_register_success(self):
         self.register_b.user_base(
             'yangqin@qq.com', 'yangqin', 'smile11', self.file_name)
