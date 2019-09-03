@@ -372,6 +372,7 @@ function hide_img(obj){
     <td>1</td>
     <td>1</td>
     <td>0</td>
+    <td>2</td>
     <td><a href="javascript:showClassDetail('c1',2)">详情</a></td>
     <td>&nbsp;</td>
 </tr>
@@ -411,9 +412,36 @@ AssertionError: True is not false : 邮箱格式校验有误
     </td>
 </tr>
 
-<tr id='pt1.2' class='hiddenRow'>
-    <td><div class='testcase'>test_register_username_err</div></td>
-    <td colspan='5' align='center'><span class='status passCase'>通过</span></td>
+<tr id='ft1.2' class='none'>
+    <td ><div class='testcase'>test_register_username_err</div></td>
+    <td colspan='5' align='center'>
+    <!--css div popup start-->
+    <span class='status errorCase'>
+    <a class="popup_link" onfocus='this.blur();' href="javascript:showTestDetail('div_ft1.2')" >
+        错误</a></span>
+    <div id='div_ft1.2' class="popup_window">
+        <div style='text-align: right; color:red;cursor:pointer'>
+        <a onfocus='this.blur();' onclick="document.getElementById('div_ft1.2').style.display = 'none' " >
+           [x]</a>
+        </div>
+        <pre>
+        
+ft1.2: Traceback (most recent call last):
+  File "case/firstcase.py", line 47, in test_register_username_err
+    '74079865@qq.com', 't', '111111', self.file_name)
+  File "E:/myJavaCode/pythonWebAuto\business\register_business.py", line 31, in register_username_err
+    self.user_base(email, username, password, file_name)
+  File "E:/myJavaCode/pythonWebAuto\business\register_business.py", line 11, in user_base
+    self.register_h.send_user_email(email)
+  File "E:/myJavaCode/pythonWebAuto\handle\register_handle.py", line 12, in send_user_email
+    self.register_p.get_email_element().send_keys(email)
+AttributeError: 'NoneType' object has no attribute 'send_keys'
+
+
+        </pre>
+    </div>
+    <!--css div popup end-->
+    </td>
     <td>无截图</td>
 </tr>
 
@@ -423,6 +451,7 @@ AssertionError: True is not false : 邮箱格式校验有误
     <th>1</th>
     <th>1</th>
     <th>0</th>
+    <th>2</th>
     <th>&nbsp;</th>
     <th>&nbsp;</th>
 </tr>

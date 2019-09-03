@@ -22,3 +22,4 @@ class FindElement(object):
                 return self.driver.find_element_by_xpath(value)
         except:
             return None
+    

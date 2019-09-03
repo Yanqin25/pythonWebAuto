@@ -33,5 +33,5 @@ class UserLog():
 if __name__ == "__main__":
     log = UserLog()
     logger = log.get_logger()
-    logger.debug("yangqin")
-    log.close
+    logger.info("yangqin")
+    log.close()
