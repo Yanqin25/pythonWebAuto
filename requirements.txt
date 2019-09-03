@@ -1,0 +1,35 @@
+# This file may be used to create an environment using:
+# $ conda create --name <env> --file <this file>
+# platform: win-64
+asn1crypto=0.22.0=py35_0
+bzip2=1.0.6=vc14_3
+certifi=2016.2.28=py35_0
+cffi=1.10.0=py35_0
+cryptography=1.8.1=py35_0
+freetype=2.5.5=vc14_2
+idna=2.6=py35_0
+jpeg=9b=vc14_0
+libpng=1.6.30=vc14_1
+libtiff=4.0.6=vc14_3
+olefile=0.44=py35_0
+openssl=1.0.2l=vc14_0
+packaging=16.8=py35_0
+pillow=4.2.1=py35_0
+pip=9.0.1=py35_1
+pycparser=2.18=py35_0
+pyopenssl=17.0.0=py35_0
+pyparsing=2.2.0=py35_0
+pysocks=1.6.6=py35_0
+pytesseract=0.3.0=pypi_0
+python=3.5.4=0
+requests=2.14.2=py35_0
+selenium=3.14.0=py35hfa6e2cd_0
+setuptools=36.4.0=py35_1
+six=1.10.0=py35_1
+urllib3=1.21.1=py35_0
+vc=14=0
+vs2015_runtime=14.0.25420=0
+wheel=0.29.0=py35_0
+win_inet_pton=1.0.1=py35_0
+wincertstore=0.2=py35_0
+zlib=1.2.11=vc14_0
